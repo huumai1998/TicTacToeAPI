@@ -16,6 +16,12 @@ Copy your SQL Server Management to (/appsettings.json) file.
 
 # Getting Start
 
+Clone this Git repositories to your local machine.
+
+```cmd
+git clone <Tic-Tac-Toe_url>
+```
+
 To Run Dockerfile. Open Terminal
 
 ```C#
@@ -29,9 +35,107 @@ Use this command
 docker run -p 8080:80 tictactoeapi
 ```
 
+This command runs a Docker container using the "tictactoeapi" image, 
+and maps port 8080 on the host machine to port 80 in the container.
+
+Access the API using a web browser or a tool such as Postman. The API should now be 
+available at http://localhost:8080/api.
+
+
+To run the Docker containers using Docker Compose, navigate to the root directory of your project and run the following command:
+
+```C#
+docker-compose up
+```
+This command starts the containers and displays their logs in the terminal window. You can stop the containers by pressing Ctrl+C.
+
 # Troubleshooting
 
 Check your lastest version of dotnet to make sure enviroment variables are set correctly.
+
+# Endpoints
+The Tic-Tac-Toe API provides the following endpoints:
+
+# Start a game
+Adds an endpoint for starting a game. This endpoint should return a game Id and Ids for the two players.
+ 
+* URL `/api/games`
+* HTTP method: `POST`
+* Request body:
+```json
+{
+  "player1Id": "string",
+  "player2Id": "string"
+}
+```
+
+* Response body:
+```json
+{
+  "id": int,
+  "player1Id": "string",
+  "player2Id": "string",
+  "currentPlayerId": "string",
+  "winnerId": "string",
+  "board": "string"
+}
+```
+
+# Register a player move
+Adds an endpoint for registering a player move. This endpoint should take the player Id and return a success response or appropriate errors. It should also notify the caller if the current move wins the game.
+
+* URL: `api\games\{id}\moves`
+* HTTP method: `POST`
+* Request body:
+```json
+{
+  "playerId": "string",
+  "position": int
+}
+```
+
+* Response body:
+```json
+{
+  "success": boolean,
+  "winnerId": "string"
+}
+```
+# Retrieve a list of currently running games
+Add endpoint for retrieve a list of currently running games.
+* URL `/games`
+* HTTP method: `GET`
+* response body:
+```json
+[
+  {
+    "id": 1,
+    "player1": "player1",
+    "player2": "player2",
+    "currentPlayer": "Player1",
+    "moves": 1,
+    "board": [
+      ["X", "", ""],
+      ["O", "X", ""],
+      ["", "", ""]
+    ],
+    "status": "In Progress"
+  },
+  {
+    "id": 2,
+    "player1": "Player1",
+    "player2": "Player2",
+    "currentPlayer": "Player1",
+    "moves": 2,
+    "board": [
+      ["X", "", ""],
+      ["O", "X", ""],
+      ["", "", ""]
+    ],
+    "status": "In Progress"
+  }
+]
+```
 
 # Appropriate OAuth 2/OIDC
 
