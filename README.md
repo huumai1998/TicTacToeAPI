@@ -1,5 +1,5 @@
 # TicTacToeAPI
-This is TicTacToeAPI (Backend Server) to manage games of Tic-Tac-Toe.
+This is Tic-Tac-Toe-API (Backend Server) to manage games of Tic-Tac-Toe.
 
 # Prerequisites
 
