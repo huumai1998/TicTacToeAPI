@@ -1,9 +1,8 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
-using TicTacToeAPI.Models;
 using TicTacToeAPI.Data;
+using TicTacToeAPI.Models;
 
 namespace TicTacToeAPI.Controllers
 {
@@ -18,25 +17,35 @@ namespace TicTacToeAPI.Controllers
             _context = context;
         }
 
-        // GET: api/Players
+        // GET: api/players
         [HttpGet]
         public ActionResult<IEnumerable<Player>> GetPlayers()
         {
             return _context.Players.ToList();
         }
 
-        // GET: api/Players/{id}
+        // GET: api/players/{id}
         [HttpGet("{id}")]
-        public ActionResult<Player> GetPlayer(Guid id)
+        public ActionResult<Player> GetPlayerById(string id)
         {
-            var player = _context.Players.FirstOrDefault(p => p.Id == id);
+            var player = _context.Players.Find(id);
 
             if (player == null)
             {
-                return NotFound("Player not found.");
+                return NotFound();
             }
 
             return player;
+        }
+
+        // POST: api/players
+        [HttpPost]
+        public ActionResult<Player> CreatePlayer([FromBody] Player player)
+        {
+            _context.Players.Add(player);
+            _context.SaveChanges();
+
+            return CreatedAtAction(nameof(GetPlayerById), new { id = player.Id }, player);
         }
     }
 }
