@@ -72,12 +72,56 @@ Adds an endpoint for starting a game. This endpoint should return a game Id and 
 * Response body:
 ```json
 {
-  "id": int,
-  "player1Id": "string",
-  "player2Id": "string",
-  "currentPlayerId": "string",
-  "winnerId": "string",
-  "board": "string"
+  "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "player1Id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "player1": {
+    "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "name": "string",
+    "symbol": 0,
+    "moves": [
+      {
+        "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+        "gameId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+        "game": "string",
+        "playerId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+        "player": "string",
+        "row": 0,
+        "column": 0,
+        "timestamp": "2023-04-08T01:27:29.916Z"
+      }
+    ]
+  },
+  "player2Id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "player2": {
+    "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "name": "string",
+    "symbol": 0,
+    "moves": [
+      {
+        "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+        "gameId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+        "game": "string",
+        "playerId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+        "player": "string",
+        "row": 0,
+        "column": 0,
+        "timestamp": "2023-04-08T01:27:29.916Z"
+      }
+    ]
+  },
+  "moves": [
+    {
+      "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "gameId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "game": "string",
+      "playerId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "player": "string",
+      "row": 0,
+      "column": 0,
+      "timestamp": "2023-04-08T01:27:29.916Z"
+    }
+  ],
+  "isGameOver": true
 }
 ```
 
@@ -89,8 +133,9 @@ Adds an endpoint for registering a player move. This endpoint should take the pl
 * Request body:
 ```json
 {
-  "playerId": "string",
-  "position": int
+  "playerId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "row": 2,
+  "column": 2
 }
 ```
 
@@ -103,38 +148,63 @@ Adds an endpoint for registering a player move. This endpoint should take the pl
 ```
 # Retrieve a list of currently running games
 Add endpoint for retrieve a list of currently running games.
-* URL `/games`
+* URL `api/games/{id}`
 * HTTP method: `GET`
 * response body:
 ```json
-[
-  {
-    "id": 1,
-    "player1": "player1",
-    "player2": "player2",
-    "currentPlayer": "Player1",
-    "moves": 1,
-    "board": [
-      ["X", "", ""],
-      ["O", "X", ""],
-      ["", "", ""]
-    ],
-    "status": "In Progress"
+{
+  "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "player1Id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "player1": {
+    "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "name": "string",
+    "symbol": 0,
+    "moves": [
+      {
+        "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+        "gameId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+        "game": "string",
+        "playerId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+        "player": "string",
+        "row": 0,
+        "column": 0,
+        "timestamp": "2023-04-08T01:34:28.433Z"
+      }
+    ]
   },
-  {
-    "id": 2,
-    "player1": "Player1",
-    "player2": "Player2",
-    "currentPlayer": "Player1",
-    "moves": 2,
-    "board": [
-      ["X", "", ""],
-      ["O", "X", ""],
-      ["", "", ""]
-    ],
-    "status": "In Progress"
-  }
-]
+  "player2Id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "player2": {
+    "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "name": "string",
+    "symbol": 0,
+    "moves": [
+      {
+        "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+        "gameId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+        "game": "string",
+        "playerId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+        "player": "string",
+        "row": 0,
+        "column": 0,
+        "timestamp": "2023-04-08T01:34:28.433Z"
+      }
+    ]
+  },
+  "moves": [
+    {
+      "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "gameId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "game": "string",
+      "playerId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "player": "string",
+      "row": 0,
+      "column": 0,
+      "timestamp": "2023-04-08T01:34:28.433Z"
+    }
+  ],
+  "isGameOver": false
+}
+  
 ```
 
 # Appropriate OAuth 2/OIDC
