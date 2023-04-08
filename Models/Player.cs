@@ -1,27 +1,25 @@
-﻿using System;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace TicTacToeAPI.Models
 {
     public class Player
     {
         public Guid Id { get; set; }
+
+        [Required]
         public string Name { get; set; }
-        public PlayerSymbol Symbol { get; set; }
-        public ICollection<Move> Moves { get; set; } = new List<Move>();
+
+        public ICollection<Move> Moves { get; set; }
 
         public Player() { }
 
-        public Player(string name, PlayerSymbol symbol)
+        public Player(string name)
         {
             Id = Guid.NewGuid();
             Name = name;
-            Symbol = symbol;
+            Moves = new List<Move>();
         }
-    }
-
-    public enum PlayerSymbol
-    {
-        X,
-        O
     }
 }
