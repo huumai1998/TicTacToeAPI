@@ -2,8 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
-using TicTacToeAPI.Models;
 using TicTacToeAPI.Data;
+using TicTacToeAPI.Models;
 
 namespace TicTacToeAPI.Controllers
 {
@@ -18,41 +18,37 @@ namespace TicTacToeAPI.Controllers
             _context = context;
         }
 
-        // POST: api/Games
+        // POST: api/games
         [HttpPost]
         public ActionResult<Game> StartGame([FromBody] NewGameRequest request)
         {
-            var player1 = new Player(request.Player1Name, PlayerSymbol.X);
-            var player2 = new Player(request.Player2Name, PlayerSymbol.O);
+            var player1 = _context.Players.Find(request.Player1Id);
+            var player2 = _context.Players.Find(request.Player2Id);
+
+            if (player1 == null || player2 == null)
+            {
+                return NotFound("One or both player IDs not found.");
+            }
 
             var game = new Game(player1.Id, player2.Id);
-
-            _context.Players.AddRange(player1, player2);
             _context.Games.Add(game);
             _context.SaveChanges();
 
             return CreatedAtAction(nameof(GetGame), new { id = game.Id }, game);
         }
 
-        // POST: api/Games/{id}/moves
-        [HttpPost("{id}/moves")]
-        public ActionResult RegisterMove(Guid id, [FromBody] MoveRequest moveRequest)
+        // PUT: api/games/{id}/moves
+        [HttpPut("{id}/moves")]
+        public IActionResult RegisterMove(Guid id, [FromBody] MoveRequest moveRequest)
         {
-            var game = _context.Games.FirstOrDefault(g => g.Id == id);
+            var game = _context.Games.Find(id);
 
             if (game == null)
             {
                 return NotFound("Game not found.");
             }
 
-            var player = _context.Players.FirstOrDefault(p => p.Id == moveRequest.PlayerId);
-
-            if (player == null)
-            {
-                return NotFound("Player not found.");
-            }
-
-            var move = new Move(id, moveRequest.PlayerId, moveRequest.Row, moveRequest.Column);
+            var move = new Move(moveRequest.PlayerId, id, moveRequest.Row, moveRequest.Column);
             game.RegisterMove(move);
 
             _context.Moves.Add(move);
@@ -60,40 +56,36 @@ namespace TicTacToeAPI.Controllers
 
             if (game.IsGameOver)
             {
-                return Ok("Game over. Player " + player.Name + " wins!");
+                return Ok(new { message = "Move registered. Game over." });
             }
-
-            return Ok("Move registered.");
+            else
+            {
+                return Ok(new { message = "Move registered." });
+            }
         }
 
-        // GET: api/Games
+        // GET: api/games
         [HttpGet]
-        public ActionResult<IEnumerable<GameInfo>> GetRunningGames()
+        public ActionResult<IEnumerable<GameInfo>> GetGames()
         {
-            var games = _context.Games
-                .Select(g => new GameInfo
-                {
-                    Id = g.Id,
-                    Player1Name = g.Player1.Name,
-                    Player2Name = g.Player2.Name,
-                    MovesCount = g.Moves.Count,
-                    GameOver = g.IsGameOver
-                })
-                .Where(gi => !gi.GameOver)
-                .ToList();
-
-            return games;
+            return _context.Games.Select(g => new GameInfo
+            {
+                Id = g.Id,
+                Player1Name = g.Player1.Name,
+                Player2Name = g.Player2.Name,
+                NumberOfMoves = g.Moves.Count
+            }).ToList();
         }
 
-        // GET: api/Games/{id}
+        // GET: api/games/{id}
         [HttpGet("{id}")]
         public ActionResult<Game> GetGame(Guid id)
         {
-            var game = _context.Games.FirstOrDefault(g => g.Id == id);
+            var game = _context.Games.Find(id);
 
             if (game == null)
             {
-                return NotFound("Game not found.");
+                return NotFound();
             }
 
             return game;
