@@ -77,17 +77,15 @@ Adds an endpoint for starting a game. This endpoint should return a game Id and 
   "player1": {
     "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
     "name": "string",
-    "symbol": 0,
     "moves": [
       {
         "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-        "gameId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-        "game": "string",
         "playerId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
         "player": "string",
-        "row": 0,
-        "column": 0,
-        "timestamp": "2023-04-08T01:27:29.916Z"
+        "gameId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+        "game": "string",
+        "row": 2,
+        "column": 2
       }
     ]
   },
@@ -95,30 +93,27 @@ Adds an endpoint for starting a game. This endpoint should return a game Id and 
   "player2": {
     "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
     "name": "string",
-    "symbol": 0,
     "moves": [
       {
         "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-        "gameId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-        "game": "string",
         "playerId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
         "player": "string",
-        "row": 0,
-        "column": 0,
-        "timestamp": "2023-04-08T01:27:29.916Z"
+        "gameId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+        "game": "string",
+        "row": 2,
+        "column": 2
       }
     ]
   },
   "moves": [
     {
       "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-      "gameId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-      "game": "string",
       "playerId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
       "player": "string",
-      "row": 0,
-      "column": 0,
-      "timestamp": "2023-04-08T01:27:29.916Z"
+      "gameId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "game": "string",
+      "row": 2,
+      "column": 2
     }
   ],
   "isGameOver": true
@@ -158,17 +153,15 @@ Add endpoint for retrieve a list of currently running games.
   "player1": {
     "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
     "name": "string",
-    "symbol": 0,
     "moves": [
       {
         "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-        "gameId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-        "game": "string",
         "playerId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
         "player": "string",
-        "row": 0,
-        "column": 0,
-        "timestamp": "2023-04-08T01:34:28.433Z"
+        "gameId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+        "game": "string",
+        "row": 2,
+        "column": 2
       }
     ]
   },
@@ -176,33 +169,30 @@ Add endpoint for retrieve a list of currently running games.
   "player2": {
     "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
     "name": "string",
-    "symbol": 0,
     "moves": [
       {
         "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-        "gameId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-        "game": "string",
         "playerId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
         "player": "string",
-        "row": 0,
-        "column": 0,
-        "timestamp": "2023-04-08T01:34:28.433Z"
+        "gameId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+        "game": "string",
+        "row": 2,
+        "column": 2
       }
     ]
   },
   "moves": [
     {
       "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-      "gameId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-      "game": "string",
       "playerId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
       "player": "string",
-      "row": 0,
-      "column": 0,
-      "timestamp": "2023-04-08T01:34:28.433Z"
+      "gameId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "game": "string",
+      "row": 2,
+      "column": 2
     }
   ],
-  "isGameOver": false
+  "isGameOver": true
 }
   
 ```
