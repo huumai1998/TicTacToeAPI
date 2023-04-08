@@ -1,6 +1,6 @@
 # TicTacToeAPI
 
-This is a .NET 6.0 Web API that provides endpoints for managing games of Tic-Tac-Toe. It uses Entity Framework and a database of your choice (an in-memory database is fine) to manage game data.
+A .NET 6.0 Web API that provides endpoints for managing games of Tic-Tac-Toe. The API uses Entity Framework and an in-memory database to manage game data.
 
 # Prerequisites
 
