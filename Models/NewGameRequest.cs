@@ -5,9 +5,9 @@ namespace TicTacToeAPI.Models
     public class NewGameRequest
     {
         [Required]
-        public string? Player1Name { get; set; }
+        public string? Player1Id { get; set; }
 
         [Required]
-        public string? Player2Name { get; set; }
+        public string? Player2Id { get; set; }
     }
 }
